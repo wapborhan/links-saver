@@ -14,7 +14,7 @@ export default function NotFound() {
     <div>
       <section className="h-screen bg-[#e9e9e9] text-black p-3 md:p-5 home">
         <section className="hidden lg:block h-full w-full relative">
-          <section class="h-full">{children}</section>
+          <section className="h-full">{children}</section>
         </section>
         <div className="lg:hidden flex flex-col h-full w-full relative overflow-hidden space-y-2">
           {children}

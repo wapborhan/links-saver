@@ -1,5 +1,4 @@
 import React from "react";
-import LoadingCOmp from "./LoadingCOmp";
 
 const MobileBody = () => {
   return (
@@ -9,7 +8,6 @@ const MobileBody = () => {
           <section className="h-full w-full flex justify-center items-center text-primary tracking-wider text-2xl">
             <h1>No websites found!</h1>
           </section>
-          <LoadingCOmp />
         </section>
       </section>
       <section className="h-[10%] w-full bg-[#00000035] rounded-b-[20px] px-5 flex justify-center items-center overflow-hidden">

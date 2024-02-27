@@ -1,4 +1,4 @@
-import SideMenu from "./SideMenu";
+import SideMenu from "./sidebar/SideMenu";
 
 const AdminSidebar = () => {
   return (

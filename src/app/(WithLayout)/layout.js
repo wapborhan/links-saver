@@ -1,6 +1,6 @@
 import HeadNav from "@/components/HeadNav";
 import Header from "@/components/Header";
-import SideBar from "@/components/SideBar";
+import SideBar from "@/components/sidebar/SideBar";
 
 const layout = ({ children }) => {
   return (

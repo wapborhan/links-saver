@@ -10,10 +10,10 @@ const layout = ({ children }) => {
             <HeadNav />
             <section
               id="scrollBar"
-              class="h-[90%] w-full p-5 overflow-y-auto bg-[#bfbfbf1c]"
+              className="h-[90%] w-full p-5 overflow-y-auto bg-[#bfbfbf1c]"
             >
-              <section class="h-full">
-                <section class="h-full">{children}</section>
+              <section className="h-full">
+                <section className="h-full">{children}</section>
               </section>
             </section>
           </section>
