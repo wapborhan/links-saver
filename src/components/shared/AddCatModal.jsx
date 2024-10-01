@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ImCross } from "react-icons/im";
 import axiosInstance from "@/utils/axiosInstance";
 
-const AddMenuModal = ({ isOpen, setIsOpen }) => {
+const AddCatModal = ({ isOpen, setIsOpen }) => {
   const [categoryIconName, setCategoryIconName] = useState(null);
 
   const handleSubmit = (e) => {
@@ -106,4 +106,4 @@ const AddMenuModal = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export default AddMenuModal;
+export default AddCatModal;
