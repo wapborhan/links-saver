@@ -39,10 +39,10 @@ const LinksCard = ({ item }) => {
               <svg
                 stroke="currentColor"
                 fill="none"
-                stroke-width="2"
+                strokeWidth="2"
                 viewBox="0 0 24 24"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 height="16"
                 width="16"
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +60,7 @@ const LinksCard = ({ item }) => {
             <svg
               stroke="currentColor"
               fill="currentColor"
-              stroke-width="0"
+              strokeWidth="0"
               viewBox="0 0 16 16"
               height="20"
               width="20"
@@ -80,7 +80,7 @@ const LinksCard = ({ item }) => {
                   <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     viewBox="0 0 24 24"
                     height="20"
                     width="20"
@@ -99,7 +99,7 @@ const LinksCard = ({ item }) => {
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   height="20"
                   width="20"

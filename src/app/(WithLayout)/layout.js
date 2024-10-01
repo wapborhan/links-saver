@@ -13,7 +13,7 @@ const layout = ({ children }) => {
             <HeadNav />
             <section
               id="scrollBar"
-              className="h-[90%] w-full p-5 overflow-y-auto rounded-b-[24px] bg-[#bfbfbf1c]"
+              className="h-[90%] w-full mb-3 overflow-y-auto rounded-b-[24px] bg-[#bfbfbf1c]"
             >
               {children}
             </section>

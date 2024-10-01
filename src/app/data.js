@@ -17,6 +17,42 @@ export const categories = [
     link: "coding",
     icon: "C",
   },
+  {
+    id: 3,
+    name: "Coding",
+    link: "coding",
+    icon: "C",
+  },
+  {
+    id: 3,
+    name: "Coding",
+    link: "coding",
+    icon: "C",
+  },
+  {
+    id: 3,
+    name: "Coding",
+    link: "coding",
+    icon: "C",
+  },
+  {
+    id: 3,
+    name: "Coding",
+    link: "coding",
+    icon: "C",
+  },
+  {
+    id: 3,
+    name: "Coding",
+    link: "coding",
+    icon: "C",
+  },
+  {
+    id: 3,
+    name: "Coding",
+    link: "coding",
+    icon: "C",
+  },
 ];
 export const links = [
   {
@@ -32,6 +68,97 @@ export const links = [
     link: "https://meet.google.com/",
     image:
       "https://lh3.googleusercontent.com/n3Eac1gPc5OTEh7Go1jemICnooceXtfs4VZW-4CPukCUi_doFsN9Q8njidksZ4KIFyPJVYtR7ZhLL16VoUJSPE1j74iTXT2xwCqq",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
+  },
+  {
+    id: 3,
+    name: "Google Forms",
+    link: "https://docs.google.com/forms",
+    image:
+      "https://lh3.googleusercontent.com/qT-mnpsMIcop6f82s52RiUSQTfhP5TqbS9eNovaITMbjEIAlIxuW5m3lI2LxLkwox92YIl7rPIzsI0oxUzLPx89KyPabgiLAPeVcjg",
   },
   {
     id: 3,
