@@ -1,4 +1,5 @@
 import { connectDatabase } from "@/utils/db";
+import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
@@ -23,18 +24,15 @@ export const GET = async (request) => {
     );
   }
 };
-export const POST = async (request) => {
-  const webData = await request.json();
+
+export const DELETE = async (request) => {
+  const id = await request.nextUrl.pathname.split("/").slice(-1)[0];
   try {
     const db = await connectDatabase();
-    const faviconUrl = `https://www.google.com/s2/favicons?domain=${webData.url}&sz=96`;
 
-    const webDatas = {
-      ...webData,
-      logo: faviconUrl,
-    };
+    const filter = { _id: new ObjectId(id) };
 
-    const website = await db.collection("websites").insertOne(webDatas);
+    const website = await db.collection("websites").deleteOne(filter);
 
     return NextResponse.json(website);
   } catch (error) {

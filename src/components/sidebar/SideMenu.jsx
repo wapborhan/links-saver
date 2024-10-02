@@ -1,12 +1,11 @@
 "use client";
-import { categories } from "@/app/data";
 import SideMenuCard from "./SideMenuCard";
 import { useState } from "react";
 import Icon from "../shared/Icon";
 import Link from "next/link";
 import AddCatModal from "../shared/AddCatModal";
 
-const SideMenu = () => {
+const SideMenu = ({ categories }) => {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -27,9 +26,11 @@ const SideMenu = () => {
             <Icon iconName="FaHome" size={20} />
             <span>Home</span>
           </li>
-          {categories.map((cat) => {
-            return <SideMenuCard key={cat.id} item={cat} />;
-          })}
+          {categories
+            ? categories.map((cat) => {
+                return <SideMenuCard key={cat._id} item={cat} />;
+              })
+            : "No Categories Found"}
         </ul>
       </article>
       <div className="h-[10%] w-full bg-[#00000010] rounded-b-[20px]">

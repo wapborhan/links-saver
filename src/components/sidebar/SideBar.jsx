@@ -1,6 +1,6 @@
 import SideMenu from "./SideMenu";
 
-const SideBar = () => {
+const SideBar = ({ categories }) => {
   return (
     <aside className="fixed left-[2%] top-5 bottom-5 w-[20%] 2xl:w-[18%] aside1">
       <div className="h-[10%] px-5 bg-[#ffffff10]  rounded-t-[20px]">
@@ -24,7 +24,7 @@ const SideBar = () => {
           </div>
         </div>
       </div>
-      <SideMenu />
+      <SideMenu categories={categories} />
     </aside>
   );
 };

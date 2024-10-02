@@ -48,19 +48,21 @@ const AddCatModal = ({ isOpen, setIsOpen }) => {
               Add Categories
             </DialogTitle>
 
-            <div class="h-full text-center">
-              <div class="w-[80%] mx-auto">
-                <div class="mt-4 flex justify-between items-center gap-3 2xl:gap-5">
+            <div className="h-full text-center">
+              <div className="w-[80%] mx-auto">
+                <div className="mt-4 flex justify-between items-center gap-3 2xl:gap-5">
                   <form className="menu space-y-5" onSubmit={handleSubmit}>
-                    <div class="lg:w-full md:w-[60%] relative bg-[#ffffff20] text-primary rounded-[8px]">
+                    <div className="lg:w-full md:w-[60%] relative bg-[#ffffff20] text-primary rounded-[8px]">
                       <input
                         type="text"
                         name="name"
                         // autocomplete="off"
-                        class="_inputField_dpxm9_1"
+                        className="_inputField_dpxm9_1"
                         required=""
                       />
-                      <span class="_inputTitle_dpxm9_25">Category Name</span>
+                      <span className="_inputTitle_dpxm9_25">
+                        Category Name
+                      </span>
                     </div>
                     <div className="text-gray-300">Select an icon</div>
                     <div
@@ -81,17 +83,17 @@ const AddCatModal = ({ isOpen, setIsOpen }) => {
                         </p>
                       ))}
                     </div>
-                    <div class="pt-6 mt-2 flex flex-col items-center gap-3 2xl:gap-5 relative ">
-                      <button class="w-full py-2 2xl:py-3 text-sm sm:text-base rounded-md text-primary bg-[#ffffff20] border border-[#ffffff20] hover:bg-[#ffffff40] duration-300 cursor-pointer flex justify-center items-center">
+                    <div className="pt-6 mt-2 flex flex-col items-center gap-3 2xl:gap-5 relative ">
+                      <button className="w-full py-2 2xl:py-3 text-sm sm:text-base rounded-md text-primary bg-[#ffffff20] border border-[#ffffff20] hover:bg-[#ffffff40] duration-300 cursor-pointer flex justify-center items-center">
                         Add
                       </button>
                     </div>
                   </form>
                 </div>
 
-                <div class="absolute -top-2 -right-2">
+                <div className="absolute -top-2 -right-2">
                   <button
-                    class="w-full text-primary cursor-pointer p-2 rounded-full bg-white/10 hover:bg-white/30 duration-300 border-2"
+                    className="w-full text-primary cursor-pointer p-2 rounded-full bg-white/10 hover:bg-white/30 duration-300 border-2"
                     onClick={() => setIsOpen(false)}
                   >
                     <ImCross size={10} />
