@@ -10,15 +10,15 @@ const Body = ({ categories }) => {
   const [selectedCategories, setSelectedCategories] = useState("all");
   const [selectedWebsite, setSelectedWebsite] = useState([]);
 
-  // useEffect(() => {
-  //   axiosInstance
-  //     .get(`/websites?cat=${selectedCategories}`)
-  //     .then((res) => {
-  //       setSelectedWebsite(res.data);
-  //       setLoader(false);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, [selectedCategories]);
+  useEffect(() => {
+    axiosInstance
+      .get(`/websites?cat=${selectedCategories}`)
+      .then((res) => {
+        setSelectedWebsite(res.data);
+        setLoader(false);
+      })
+      .catch((err) => console.error(err));
+  }, [selectedCategories]);
 
   return (
     <>

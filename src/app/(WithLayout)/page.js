@@ -7,11 +7,11 @@ const getCategories = async () => {
 };
 
 const Home = async () => {
-  // const categories = await getCategories();
+  const categories = await getCategories();
 
   return (
     <section className="hidden lg:block h-full w-full relative">
-      {/* <Body categories={categories} /> */}
+      <Body categories={categories} />
     </section>
   );
 };
