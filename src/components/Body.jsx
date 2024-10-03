@@ -1,19 +1,24 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HeadNav from "./HeadNav";
 import LinksCard from "./LinksCard";
 import SideBar from "./sidebar/SideBar";
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getCategories } from "@/app/(WithLayout)/getCategories";
-import { getWebsites } from "@/app/(WithLayout)/getWebsites";
+import axiosInstance from "@/utils/axiosInstance";
 
-const Body = () => {
-  const { data: categories } = useSuspenseQuery(getCategories);
-
+const Body = ({ categories }) => {
+  const [loader, setLoader] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState("all");
-  const { data: selectedWebsite, isPending } = useSuspenseQuery(
-    getWebsites(selectedCategories)
-  );
+  const [selectedWebsite, setSelectedWebsite] = useState([]);
+
+  // useEffect(() => {
+  //   axiosInstance
+  //     .get(`/websites?cat=${selectedCategories}`)
+  //     .then((res) => {
+  //       setSelectedWebsite(res.data);
+  //       setLoader(false);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, [selectedCategories]);
 
   return (
     <>
@@ -30,22 +35,24 @@ const Body = () => {
             className="h-[90%] w-full mb-3 overflow-y-auto rounded-b-[24px] bg-[#bfbfbf1c]"
           >
             <section className="h-full">
-              {selectedWebsite.length > 0 ? (
-                <section className="h-full">
-                  <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-4 px-4">
-                    {isPending ? (
-                      <>Loading...</>
-                    ) : (
-                      selectedWebsite.map((item) => {
-                        return <LinksCard key={item._id} item={item} />;
-                      })
-                    )}
-                  </section>
-                </section>
+              {loader ? (
+                <>Loading ...</>
               ) : (
-                <section className="h-full w-full flex justify-center items-center text-primary tracking-wider text-2xl">
-                  <h1>No websites found!</h1>
-                </section>
+                <>
+                  {selectedWebsite.length > 0 ? (
+                    <section className="h-full">
+                      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-4 px-4">
+                        {selectedWebsite.map((item) => {
+                          return <LinksCard key={item._id} item={item} />;
+                        })}
+                      </section>
+                    </section>
+                  ) : (
+                    <section className="h-full w-full flex justify-center items-center text-primary tracking-wider text-2xl">
+                      <h1>No websites found!</h1>
+                    </section>
+                  )}
+                </>
               )}
             </section>
           </section>
