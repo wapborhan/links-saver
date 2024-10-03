@@ -6,6 +6,7 @@ import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaArrowUp, FaExternalLinkAlt, FaTrash } from "react-icons/fa";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import toast from "react-hot-toast";
 
 const LinksCard = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +21,7 @@ const LinksCard = ({ item }) => {
     axiosInstance
       .delete(`/websites/${id}`)
       .then((res) => {
-        console.log(res);
-        alert("Deleted");
+        toast.error("Website Deleted.");
         setIsOpen(false);
         setDeleteOpen(false);
       })

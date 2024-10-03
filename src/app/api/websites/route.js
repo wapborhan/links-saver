@@ -2,12 +2,21 @@ import { connectDatabase } from "@/utils/db";
 import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
+  const cat = request.nextUrl.searchParams.get("cat");
   try {
     const db = await connectDatabase();
+    let website;
 
-    const website = await db.collection("websites").find({}).toArray();
+    if (cat === "all") {
+      website = await db.collection("websites").find({}).toArray();
+    } else {
+      website = await db
+        .collection("websites")
+        .find({ categories: cat })
+        .toArray();
+    }
 
-    if (!website.length) {
+    if (!website) {
       return NextResponse.json(
         { message: "No Websites found" },
         { status: 404 }
@@ -28,6 +37,28 @@ export const POST = async (request) => {
   try {
     const db = await connectDatabase();
     const faviconUrl = `https://www.google.com/s2/favicons?domain=${webData.url}&sz=96`;
+
+    const existingName = await db
+      .collection("websites")
+      .findOne({ name: webData.name });
+
+    const existingUrl = await db
+      .collection("websites")
+      .findOne({ url: webData.url });
+
+    if (existingName) {
+      return NextResponse.json(
+        { message: "Website with this Name already exists" },
+        { status: 409 }
+      );
+    }
+
+    if (existingUrl) {
+      return NextResponse.json(
+        { message: "Website with this URL already exists" },
+        { status: 409 }
+      );
+    }
 
     const webDatas = {
       ...webData,

@@ -5,7 +5,7 @@ import Icon from "../shared/Icon";
 import Link from "next/link";
 import AddCatModal from "../shared/AddCatModal";
 
-const SideMenu = ({ categories }) => {
+const SideMenu = ({ categories, setSelectedCategories }) => {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,13 +22,22 @@ const SideMenu = ({ categories }) => {
       <AddCatModal isOpen={isOpen} setIsOpen={setIsOpen} />
       <article id="menuScrollBar" className="h-[70%] overflow-y-scroll">
         <ul className="flex flex-col justify-start items-start gap-3 list-none px-5 pb-4">
-          <li className="_menu_1jk02_1 bg-[#ffffff30] hover:bg-[#ffffff50]">
+          <li
+            className="_menu_1jk02_1 bg-[#ffffff30] hover:bg-[#ffffff50]"
+            onClick={() => setSelectedCategories("all")}
+          >
             <Icon iconName="FaHome" size={20} />
             <span>Home</span>
           </li>
           {categories
             ? categories.map((cat) => {
-                return <SideMenuCard key={cat._id} item={cat} />;
+                return (
+                  <SideMenuCard
+                    key={cat._id}
+                    item={cat}
+                    setSelectedCategories={setSelectedCategories}
+                  />
+                );
               })
             : "No Categories Found"}
         </ul>

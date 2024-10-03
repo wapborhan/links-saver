@@ -4,6 +4,7 @@ import Icon from "./Icon";
 import { useState } from "react";
 import { ImCross } from "react-icons/im";
 import axiosInstance from "@/utils/axiosInstance";
+import toast from "react-hot-toast";
 
 const AddCatModal = ({ isOpen, setIsOpen }) => {
   const [categoryIconName, setCategoryIconName] = useState(null);
@@ -22,13 +23,24 @@ const AddCatModal = ({ isOpen, setIsOpen }) => {
       .post("/categories", inputData)
       .then((res) => {
         if (res.data.acknowledged) {
-          alert("Categories Adedd.");
+          toast.success("Categories Adedd.", {
+            style: {
+              border: "1px solid #713200",
+              padding: "16px",
+              color: "#713200",
+            },
+            iconTheme: {
+              primary: "#713200",
+              secondary: "#FFFAEE",
+            },
+          });
+
           form.reset();
           setCategoryIconName(null);
           setIsOpen(false);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => toast.error(err.response.data.message));
   };
   return (
     <Dialog

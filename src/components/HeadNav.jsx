@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaPlusCircle, FaUserAlt } from "react-icons/fa";
 import AddWebModal from "./shared/AddWebModal";
 
-const HeadNav = () => {
+const HeadNav = ({ selectedCategories }) => {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ const HeadNav = () => {
       <div className="w-full flex justify-between items-center">
         <div className="flex justify-start items-center gap-4">
           <h1 className="uppercase text-white font-semibold 2xl:text-lg">
-            home
+            {selectedCategories === "all" ? "Home" : selectedCategories}
           </h1>
         </div>
         <div className="corner flex gap-5">
@@ -22,7 +22,11 @@ const HeadNav = () => {
             <FaPlusCircle />
             <span>Add</span>
           </button>
-          <AddWebModal isOpen={isOpen} setIsOpen={setIsOpen} />
+          <AddWebModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            selectedCategories={selectedCategories}
+          />
           <div className="profile text-primary flex justify-start items-center gap-2 uppercase px-3 rounded-full  bg-[#ffffff08] hover:bg-[#ffffff20]  duration-300">
             <FaUserAlt />
             <span>Profile</span>

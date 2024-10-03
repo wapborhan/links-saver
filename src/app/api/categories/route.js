@@ -28,6 +28,27 @@ export const POST = async (request) => {
   try {
     const db = await connectDatabase();
 
+    const existingCategories = await db
+      .collection("categories")
+      .findOne({ name: catData.name });
+
+    if (
+      catData.name.toLowerCase() === "home" ||
+      catData.name.toLowerCase() === "Home"
+    ) {
+      return NextResponse.json(
+        { message: `Website  Name "Home" Can not Add.` },
+        { status: 409 }
+      );
+    }
+
+    if (existingCategories) {
+      return NextResponse.json(
+        { message: "Categories with this name already exists" },
+        { status: 409 }
+      );
+    }
+
     const categories = await db.collection("categories").insertOne(catData);
 
     return NextResponse.json(categories);
