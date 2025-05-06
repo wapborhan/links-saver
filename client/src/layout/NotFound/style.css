@@ -1,0 +1,42 @@
+/* body{
+  margin:0;
+  padding:0;
+  font-family: "Roboto", serif;
+}
+section {
+  padding: 40px 0;
+  background: #fff;
+}
+
+section img {
+  width: 100%;
+} */
+
+.bg-img {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-img h1 {
+  font-size: 80px;
+}
+
+.bg-img h3 {
+  font-size: 80px;
+}
+
+.link {
+  color: #fff;
+  padding: 10px 20px;
+  background: #EE9403;
+  margin: 20px 0;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+  background-color: #E76B08;
+}

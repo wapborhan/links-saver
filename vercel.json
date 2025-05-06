@@ -1,5 +1,16 @@
 {
-  "git": {
-    "deploymentEnabled": true
-  }
+    "version": 2,
+    "name" : "ihadith",
+    "builds": [
+        {
+            "src": "./index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/"
+        }
+    ]
 }
