@@ -43,7 +43,7 @@ const SideMenu = ({ categories, setSelectedCategories }) => {
       </article>
       <div className="h-[10%] w-full bg-[#00000010] rounded-b-[20px]">
         <div className="flex justify-center items-center h-full">
-          <p className="text-sm 2xl:text-base text-primary">
+          <p className="text-sm 2xl:text-base text-primary flex gap-4 justify-between">
             Developed By
             <span className="text-white font-semibold cursor-pointer">
               <Link to="https://www.srdreamlab.com" target="__BLANK">

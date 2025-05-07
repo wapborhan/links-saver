@@ -33,7 +33,7 @@ applyMidleware(app);
 applyRouter(app);
 
 //database connection
-// dbConnection();
+dbConnection();
 
 //error handler
 errorHandler(app);

@@ -1,8 +1,18 @@
 const userRouter = require("./userRouter");
+const categoriesRouter = require("./categoriesRouter");
+const websitesRouter = require("./websitesRouter");
 const routers = [
   {
     path: "/api/user",
     handler: userRouter,
+  },
+  {
+    path: "/api/categories",
+    handler: categoriesRouter,
+  },
+  {
+    path: "/api/websites",
+    handler: websitesRouter,
   },
 
   // {

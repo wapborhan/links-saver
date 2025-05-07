@@ -3,35 +3,46 @@ import axios from "axios";
 import SideBar from "../../components/sidebar/SideBar";
 import HeadNav from "../../components/HeadNav";
 import LinksCard from "../../components/LinksCard";
+import LoaderWebsite from "../../components/shared/loaderWebsite";
 
 const HomePage = () => {
   const [loader, setLoader] = useState(false);
+  const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState("all");
   const [selectedWebsite, setSelectedWebsite] = useState();
 
-  const fetchWebsites = (category) => {
+  useEffect(() => {
     setLoader(true);
     axios
-      .get(`/websites?cat=${category}`)
+      .get(`http://localhost:3300/api/websites?cat=${selectedCategories}`)
       .then((res) => {
-        setSelectedWebsite(res.data);
+        setSelectedWebsite(res?.data?.data);
         setLoader(false);
       })
       .catch((err) => {
         console.error(err);
         setLoader(false);
       });
-  };
+  }, [selectedCategories]);
 
   useEffect(() => {
-    if (selectedCategories !== "all") {
-      fetchWebsites(selectedCategories);
-    }
-  }, [selectedCategories]);
+    setLoader(true);
+    axios
+      .get(`http://localhost:3300/api/categories`)
+      .then((res) => {
+        setCategories(res?.data?.data);
+        setLoader(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoader(false);
+      });
+  }, []);
+
   return (
     <section className="hidden lg:block h-full w-full relative">
       <SideBar
-        // categories={categories}
+        categories={categories}
         setSelectedCategories={setSelectedCategories}
       />
 
@@ -44,7 +55,13 @@ const HomePage = () => {
           >
             <section className="h-full">
               {loader ? (
-                <>Loading ...</>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-4 px-4">
+                  <LoaderWebsite />
+                  <LoaderWebsite />
+                  <LoaderWebsite />
+                  <LoaderWebsite />
+                  <LoaderWebsite />
+                </div>
               ) : (
                 <>
                   {selectedWebsite && selectedWebsite.length > 0 ? (
