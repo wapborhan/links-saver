@@ -3,8 +3,14 @@ import { useState } from "react";
 import Icon from "../shared/Icon";
 import AddCatModal from "../shared/AddCatModal";
 import { Link } from "react-router-dom";
+import LoaderCategories from "../shared/LoaderCategories";
 
-const SideMenu = ({ categories, setSelectedCategories, refetch }) => {
+const SideMenu = ({
+  categories,
+  setSelectedCategories,
+  refetch,
+  isCategoriesLoading,
+}) => {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -28,18 +34,26 @@ const SideMenu = ({ categories, setSelectedCategories, refetch }) => {
             <Icon iconName="FaHome" size={20} />
             <span>Home</span>
           </li>
-          {categories
-            ? categories?.map((cat) => {
-                return (
-                  <SideMenuCard
-                    key={cat._id}
-                    item={cat}
-                    setSelectedCategories={setSelectedCategories}
-                    refetch={refetch}
-                  />
-                );
-              })
-            : "No Categories Found"}
+          {isCategoriesLoading ? (
+            <>
+              <LoaderCategories />
+              <LoaderCategories />
+              <LoaderCategories />
+            </>
+          ) : categories ? (
+            categories?.map((cat) => {
+              return (
+                <SideMenuCard
+                  key={cat._id}
+                  item={cat}
+                  setSelectedCategories={setSelectedCategories}
+                  refetch={refetch}
+                />
+              );
+            })
+          ) : (
+            "No Categories Found"
+          )}
         </ul>
       </article>
       <div className="h-[10%] w-full bg-[#00000010] rounded-b-[20px]">

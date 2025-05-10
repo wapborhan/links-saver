@@ -23,6 +23,7 @@ const HomePage = () => {
         refetch={catRefetch}
         categories={categories}
         setSelectedCategories={setSelectedCategories}
+        isCategoriesLoading={isCategoriesLoading}
       />
 
       <aside className="fixed left-[24%] 2xl:left-[22%] top-5 bottom-5 w-[74%] 2xl:w-[77%]  aside2">
@@ -50,7 +51,13 @@ const HomePage = () => {
                     <section className="h-full">
                       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-4 px-4">
                         {websites?.map((item) => {
-                          return <LinksCard key={item._id} item={item} />;
+                          return (
+                            <LinksCard
+                              key={item._id}
+                              item={item}
+                              webRefetch={webRefetch}
+                            />
+                          );
                         })}
                       </section>
                     </section>

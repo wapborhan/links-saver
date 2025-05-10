@@ -12,7 +12,7 @@ const SideMenuCard = ({ item, setSelectedCategories, refetch }) => {
       className="_menu_1jk02_1 bg-[#ffffff30] hover:bg-[#ffffff50]"
     >
       <Icon iconName={item.icon} size={20} />
-      <span>{item.name}</span>
+      <span className="uppercase">{item.name}</span>
     </li>
   );
 };

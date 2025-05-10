@@ -40,6 +40,7 @@ import {
 } from "react-icons/fa";
 
 import { FaPencil } from "react-icons/fa6";
+import { ImSpinner10 } from "react-icons/im";
 import { MdFavorite } from "react-icons/md";
 
 const Icon = ({ iconName, size }) => {
@@ -83,6 +84,7 @@ const Icon = ({ iconName, size }) => {
     FaPlaneDeparture: <FaPlaneDeparture size={size} />,
     FaMoneyBillWave: <FaMoneyBillWave size={size} />,
     FaBriefcase: <FaBriefcase size={size} />,
+    ImSpinner10: <ImSpinner10 size={size} />,
     default: <FaFolder size={size} />,
   };
 

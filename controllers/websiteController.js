@@ -1,4 +1,5 @@
 const Websites = require("../models/Websites");
+const { ObjectId } = require("mongoose").Types;
 
 exports.getWebsites = async (req, res, next) => {
   const cat = req.query.cat;
@@ -61,6 +62,32 @@ exports.createWebsite = async (req, res, next) => {
       success: true,
       status: 200,
       message: "User Found",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      status: 500,
+      message: error.message,
+      data: {},
+    });
+  }
+};
+
+exports.deleteWebsite = async (req, res, next) => {
+  const id = req.params.id;
+
+  console.log(id);
+
+  try {
+    const filter = { _id: new ObjectId(id) };
+
+    const result = await Websites.deleteOne(filter);
+
+    res.status(200).json({
+      success: true,
+      status: 200,
+      message: "Website Deleted.",
       data: result,
     });
   } catch (error) {

@@ -6,10 +6,12 @@ import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
-const LinksCard = ({ item }) => {
+const LinksCard = ({ item, webRefetch }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const axiosPublic = useAxiosPublic();
 
   const cancel = () => {
     setIsOpen(false);
@@ -17,12 +19,13 @@ const LinksCard = ({ item }) => {
   };
 
   const handleDelete = (id) => {
-    axios
+    axiosPublic
       .delete(`/websites/${id}`)
       .then((res) => {
         toast.error("Website Deleted.");
         setIsOpen(false);
         setDeleteOpen(false);
+        webRefetch();
       })
       .catch((err) => console.error(err));
   };
@@ -54,8 +57,9 @@ const LinksCard = ({ item }) => {
               </h4>
             </div>
             <Link
-              to={item.url}
+              to={`https://${item.url}`}
               className="w-[15%] p-[6px] 2xl:p-2 bg-[#ffffff20] text-primary rounded-[8px] text-center flex justify-center items-center hover:bg-[#ffffff30] duration-300 cursor-pointer"
+              target="__BLANK"
             >
               <FaExternalLinkAlt />
             </Link>

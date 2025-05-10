@@ -2,9 +2,11 @@
 import { useState } from "react";
 import { FaPlusCircle, FaUserAlt } from "react-icons/fa";
 import AddWebModal from "./shared/AddWebModal";
+import { Link } from "react-router-dom";
 
 const HeadNav = ({ selectedCategories, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
+  const user = false;
 
   return (
     <section className="h-[10%] w-full bg-[#00000054] rounded-t-[20px] px-5 flex justify-center items-center overflow-hidden">
@@ -28,10 +30,20 @@ const HeadNav = ({ selectedCategories, refetch }) => {
             selectedCategories={selectedCategories}
             refetch={refetch}
           />
-          <div className="profile text-primary flex justify-start items-center gap-2 uppercase px-3 rounded-full  bg-[#ffffff08] hover:bg-[#ffffff20]  duration-300">
-            <FaUserAlt />
-            <span>Profile</span>
-          </div>
+
+          <Link
+            to={user ? "/profile" : "/signin"}
+            className="profile text-primary flex justify-start items-center gap-2 uppercase px-3 rounded-full  bg-[#ffffff08] hover:bg-[#ffffff20]  duration-300"
+          >
+            {user ? (
+              <>
+                <FaUserAlt />
+                <span>Profile</span>
+              </>
+            ) : (
+              <>Sign In</>
+            )}
+          </Link>
         </div>
       </div>
     </section>

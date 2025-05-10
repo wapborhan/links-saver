@@ -3,6 +3,7 @@ import Root from "../layout/Root";
 import HomePage from "../pages/home/HomePage";
 import About from "../pages/about/About";
 import NotFound from "../layout/NotFound/NotFound";
+import Dash from "../layout/Dash";
 
 const router = createBrowserRouter([
   {
@@ -15,14 +16,25 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/about",
+        path: "/profile",
         element: <About />,
+      },
+      {
+        path: "/signin",
+        element: "test",
       },
     ],
   },
   {
-    path: "/signin",
-    element: "",
+    path: "/dashboard",
+    element: <Dash />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: "",
+        element: "Kl",
+      },
+    ],
   },
 ]);
 export default router;
