@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaPlusCircle, FaUserAlt } from "react-icons/fa";
 import AddWebModal from "./shared/AddWebModal";
 
-const HeadNav = ({ selectedCategories }) => {
+const HeadNav = ({ selectedCategories, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -26,6 +26,7 @@ const HeadNav = ({ selectedCategories }) => {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             selectedCategories={selectedCategories}
+            refetch={refetch}
           />
           <div className="profile text-primary flex justify-start items-center gap-2 uppercase px-3 rounded-full  bg-[#ffffff08] hover:bg-[#ffffff20]  duration-300">
             <FaUserAlt />

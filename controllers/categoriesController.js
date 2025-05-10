@@ -1,10 +1,8 @@
 const Categories = require("../models/Categories");
-const Users = require("../models/Users");
 
 exports.getCategories = async (req, res, next) => {
   try {
     const data = await Categories.find({});
-    console.log(data);
     res.status(200).json({
       success: true,
       status: 200,
@@ -21,18 +19,43 @@ exports.getCategories = async (req, res, next) => {
   }
 };
 
-exports.getUserByEmail = async (req, res, next) => {
+exports.createCategories = async (req, res, next) => {
   try {
-    const user = await Users.find({
-      _id: req.params.id,
-      email: req.query.email,
+    const catData = req.body;
+
+    if (
+      catData.name.toLowerCase() === "home" ||
+      catData.name.toLowerCase() === "Home"
+    ) {
+      return res.status(400).json({
+        success: false,
+        status: 409,
+        message: `Category  Name "Home" Can not Add.`,
+        data: {},
+      });
+    }
+
+    const existingCategories = await Categories.findOne({
+      name: { $regex: `^${catData.name}$`, $options: "i" },
     });
+
+    if (existingCategories) {
+      return res.status(400).json({
+        success: false,
+        status: 409,
+        message: "Categories with this name already exists",
+        data: {},
+      });
+    }
+
+    const postData = new Categories(catData);
+    const result = await postData.save();
 
     res.status(200).json({
       success: true,
       status: 200,
-      message: "User Found",
-      data: user,
+      message: "Categories Added",
+      data: result,
     });
   } catch (error) {
     res.status(500).json({

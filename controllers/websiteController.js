@@ -1,9 +1,7 @@
-const Users = require("../models/Users");
 const Websites = require("../models/Websites");
 
 exports.getWebsites = async (req, res, next) => {
   const cat = req.query.cat;
-  console.log(cat);
 
   try {
     let data;
@@ -11,7 +9,7 @@ exports.getWebsites = async (req, res, next) => {
     if (cat === "all") {
       data = await Websites.find({});
     } else {
-      data = await Websites.findOne({ categories: cat });
+      data = await Websites.find({ categories: cat });
     }
 
     res.status(200).json({
@@ -30,18 +28,40 @@ exports.getWebsites = async (req, res, next) => {
   }
 };
 
-exports.getUserByEmail = async (req, res, next) => {
+exports.createWebsite = async (req, res, next) => {
   try {
-    const user = await Users.find({
-      _id: req.params.id,
-      email: req.query.email,
-    });
+    const webData = req.body;
+
+    const existingName = await Websites.findOne({ name: webData.name });
+
+    const existingUrl = await Websites.findOne({ url: webData.url });
+
+    if (existingName) {
+      return res.status(400).json({
+        success: true,
+        status: 409,
+        message: "Website with this Name already exists",
+        data: {},
+      });
+    }
+
+    if (existingUrl) {
+      return res.status(400).json({
+        success: true,
+        status: 409,
+        message: "Website with this URL already exists",
+        data: {},
+      });
+    }
+
+    const postData = new Websites(webData);
+    const result = await postData.save();
 
     res.status(200).json({
       success: true,
       status: 200,
       message: "User Found",
-      data: user,
+      data: result,
     });
   } catch (error) {
     res.status(500).json({

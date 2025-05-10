@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const categoriesSchema = mongoose.Schema(
   {
     name: { type: String },
+    slug: { type: String },
     icon: { type: String },
   },
   { timestamps: true }

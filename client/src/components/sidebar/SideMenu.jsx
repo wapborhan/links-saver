@@ -4,7 +4,7 @@ import Icon from "../shared/Icon";
 import AddCatModal from "../shared/AddCatModal";
 import { Link } from "react-router-dom";
 
-const SideMenu = ({ categories, setSelectedCategories }) => {
+const SideMenu = ({ categories, setSelectedCategories, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ const SideMenu = ({ categories, setSelectedCategories }) => {
           <span>Add New</span>
         </div>
       </div>
-      <AddCatModal isOpen={isOpen} setIsOpen={setIsOpen} />
+      <AddCatModal isOpen={isOpen} setIsOpen={setIsOpen} refetch={refetch} />
       <article id="menuScrollBar" className="h-[70%] overflow-y-scroll">
         <ul className="flex flex-col justify-start items-start gap-3 list-none px-5 pb-4">
           <li
@@ -35,6 +35,7 @@ const SideMenu = ({ categories, setSelectedCategories }) => {
                     key={cat._id}
                     item={cat}
                     setSelectedCategories={setSelectedCategories}
+                    refetch={refetch}
                   />
                 );
               })

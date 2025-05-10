@@ -1,60 +1,42 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import SideBar from "../../components/sidebar/SideBar";
 import HeadNav from "../../components/HeadNav";
 import LinksCard from "../../components/LinksCard";
 import LoaderWebsite from "../../components/shared/loaderWebsite";
+import useFetchCategories from "../../hooks/useFetchCategories";
+import useFetchWebsite from "../../hooks/useFetchWebsite";
 
 const HomePage = () => {
-  const [loader, setLoader] = useState(false);
-  const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState("all");
-  const [selectedWebsite, setSelectedWebsite] = useState();
+  const [categories, isCategoriesLoading, catRefetch] = useFetchCategories();
+
+  const [websites, isWebsitesLoading, webRefetch] =
+    useFetchWebsite(selectedCategories);
 
   useEffect(() => {
-    setLoader(true);
-    axios
-      .get(`http://localhost:3300/api/websites?cat=${selectedCategories}`)
-      .then((res) => {
-        setSelectedWebsite(res?.data?.data);
-        setLoader(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoader(false);
-      });
-  }, [selectedCategories]);
-
-  useEffect(() => {
-    setLoader(true);
-    axios
-      .get(`http://localhost:3300/api/categories`)
-      .then((res) => {
-        setCategories(res?.data?.data);
-        setLoader(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setLoader(false);
-      });
-  }, []);
+    webRefetch();
+  }, [selectedCategories, webRefetch]);
 
   return (
     <section className="hidden lg:block h-full w-full relative">
       <SideBar
+        refetch={catRefetch}
         categories={categories}
         setSelectedCategories={setSelectedCategories}
       />
 
       <aside className="fixed left-[24%] 2xl:left-[22%] top-5 bottom-5 w-[74%] 2xl:w-[77%]  aside2">
         <section className="h-full w-full rounded-[24px]">
-          <HeadNav selectedCategories={selectedCategories} />
+          <HeadNav
+            selectedCategories={selectedCategories}
+            refetch={webRefetch}
+          />
           <section
             id="scrollBar"
             className="h-[90%] w-full mb-3 overflow-y-auto rounded-b-[24px] bg-[#bfbfbf1c]"
           >
             <section className="h-full">
-              {loader ? (
+              {isWebsitesLoading ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-4 px-4">
                   <LoaderWebsite />
                   <LoaderWebsite />
@@ -64,10 +46,10 @@ const HomePage = () => {
                 </div>
               ) : (
                 <>
-                  {selectedWebsite && selectedWebsite.length > 0 ? (
+                  {websites && websites.length > 0 ? (
                     <section className="h-full">
                       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-5 py-4 px-4">
-                        {selectedWebsite.map((item) => {
+                        {websites?.map((item) => {
                           return <LinksCard key={item._id} item={item} />;
                         })}
                       </section>

@@ -1,6 +1,6 @@
 import SideMenu from "./SideMenu";
 
-const SideBar = ({ categories, setSelectedCategories }) => {
+const SideBar = ({ categories, setSelectedCategories, refetch }) => {
   return (
     <aside className="fixed left-[2%] top-5 bottom-5 w-[20%] 2xl:w-[18%] aside1">
       <div className="h-[10%] px-5 bg-[#ffffff10]  rounded-t-[20px]">
@@ -25,6 +25,7 @@ const SideBar = ({ categories, setSelectedCategories }) => {
         </div>
       </div>
       <SideMenu
+        refetch={refetch}
         categories={categories}
         setSelectedCategories={setSelectedCategories}
       />

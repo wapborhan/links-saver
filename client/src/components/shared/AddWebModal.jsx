@@ -1,24 +1,30 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { ImCross } from "react-icons/im";
 import toast from "react-hot-toast";
-import axios from "axios";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const AddWebModal = ({ isOpen, setIsOpen, selectedCategories }) => {
+const AddWebModal = ({ isOpen, setIsOpen, selectedCategories, refetch }) => {
+  const axiosPublic = useAxiosPublic();
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const form = e.target;
     const name = form.name.value;
     const url = form.url.value;
+
     const inputData = {
       name,
       url,
-      categories: selectedCategories,
+      categories: selectedCategories.toLowerCase(),
     };
 
-    axios
+    axiosPublic
       .post("/websites", inputData)
       .then((res) => {
-        if (res.data.acknowledged) {
+        console.log(res);
+
+        if (res.data.status === 200) {
+          refetch();
           toast.success("Categories Adedd.", {
             style: {
               border: "1px solid #713200",
@@ -35,6 +41,8 @@ const AddWebModal = ({ isOpen, setIsOpen, selectedCategories }) => {
         }
       })
       .catch((err) => {
+        console.log(err);
+
         toast.error(err.response.data.message);
       });
   };

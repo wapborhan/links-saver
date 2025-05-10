@@ -35,7 +35,7 @@ const LinksCard = ({ item }) => {
             <img
               height={100}
               width={100}
-              src={item.logo}
+              src={`https://www.google.com/s2/favicons?domain=${item.url}&sz=96`}
               alt="logo"
               className="h-10 w-10 2xl:h-16 2xl:w-16 bg-[#ffffff20] hover:bg-[#ffffff40] ring-[10px] rounded-[8px] ring-[#ffffff20] hover:ring-[#ffffff40] object-cover object-center mx-auto  cursor-pointer duration-300"
             />

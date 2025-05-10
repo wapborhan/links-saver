@@ -4,10 +4,11 @@ import Icon from "./Icon";
 import { useState } from "react";
 import { ImCross } from "react-icons/im";
 import toast from "react-hot-toast";
-import axios from "axios";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
-const AddCatModal = ({ isOpen, setIsOpen }) => {
+const AddCatModal = ({ isOpen, setIsOpen, refetch }) => {
   const [categoryIconName, setCategoryIconName] = useState(null);
+  const axiosPublic = useAxiosPublic();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,14 +17,17 @@ const AddCatModal = ({ isOpen, setIsOpen }) => {
     const icon = categoryIconName;
     const inputData = {
       name,
+      slug: name.toLowerCase(),
       icon,
     };
 
-    axios
+    axiosPublic
       .post("/categories", inputData)
       .then((res) => {
-        if (res.data.acknowledged) {
-          toast.success("Categories Adedd.", {
+        console.log(res);
+
+        if (res.data.status === 200) {
+          toast.success(res.data.message, {
             style: {
               border: "1px solid #713200",
               padding: "16px",
@@ -34,13 +38,17 @@ const AddCatModal = ({ isOpen, setIsOpen }) => {
               secondary: "#FFFAEE",
             },
           });
-
+          refetch();
           form.reset();
           setCategoryIconName(null);
           setIsOpen(false);
         }
       })
-      .catch((err) => toast.error(err.response.data.message));
+      .catch((err) => {
+        console.log(err);
+
+        toast.error(err.response.data.message);
+      });
   };
   return (
     <Dialog

@@ -20,5 +20,9 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/signin",
+    element: "",
+  },
 ]);
 export default router;
