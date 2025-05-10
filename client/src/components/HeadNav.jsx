@@ -3,10 +3,13 @@ import { useState } from "react";
 import { FaPlusCircle, FaUserAlt } from "react-icons/fa";
 import AddWebModal from "./shared/AddWebModal";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { MdOutlineDashboardCustomize } from "react-icons/md";
+import { FaArrowRightFromBracket } from "react-icons/fa6";
 
 const HeadNav = ({ selectedCategories, refetch }) => {
   let [isOpen, setIsOpen] = useState(false);
-  const user = false;
+  const user = useAuth();
 
   return (
     <section className="h-[10%] w-full bg-[#00000054] rounded-t-[20px] px-5 flex justify-center items-center overflow-hidden">
@@ -37,11 +40,14 @@ const HeadNav = ({ selectedCategories, refetch }) => {
           >
             {user ? (
               <>
-                <FaUserAlt />
-                <span>Profile</span>
+                <MdOutlineDashboardCustomize />
+                <span>Dashboard</span>
               </>
             ) : (
-              <>Sign In</>
+              <>
+                {" "}
+                <FaArrowRightFromBracket /> Sign In
+              </>
             )}
           </Link>
         </div>

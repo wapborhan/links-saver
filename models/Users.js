@@ -10,10 +10,10 @@ const userSchema = mongoose.Schema(
     photoUrl: {
       type: String,
     },
-    mobileNo: {
-      type: Number,
+    name: {
+      type: String,
     },
-    address: {
+    userType: {
       type: String,
     },
   },

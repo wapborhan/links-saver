@@ -12,7 +12,6 @@ const useFetchWebsite = (selectedCategories) => {
     queryKey: ["websites"],
     queryFn: async () => {
       const res = await axiosPublic.get(`/websites?cat=${selectedCategories}`);
-      console.log(res.data?.data);
       return res.data?.data;
     },
   });

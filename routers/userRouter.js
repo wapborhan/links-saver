@@ -1,7 +1,14 @@
-const { getUsers, getUserByEmail } = require("../controllers/userController");
+const {
+  createUser,
+  getUsers,
+  getUserByUsername,
+} = require("../controllers/userController");
 
 const router = require("express").Router();
 
-router.get("/:id", getUsers).get("/:catId/:subCatId", getUserByEmail);
+router
+  .post("/", createUser)
+  .get("/", getUsers)
+  .get("/:username", getUserByUsername);
 
 module.exports = router;

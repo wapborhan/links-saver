@@ -4,6 +4,8 @@ import HomePage from "../pages/home/HomePage";
 import About from "../pages/about/About";
 import NotFound from "../layout/NotFound/NotFound";
 import Dash from "../layout/Dash";
+import SIgnIn from "../layout/SIgnIn";
+import SIgnUp from "../layout/SIgnUp";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/signin",
-        element: "test",
+        element: <SIgnIn />,
+      },
+      {
+        path: "/signup",
+        element: <SIgnUp />,
       },
     ],
   },
@@ -31,7 +37,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: "",
+        path: "profile",
         element: "Kl",
       },
     ],

@@ -14,13 +14,6 @@ const routers = [
     path: "/api/websites",
     handler: websitesRouter,
   },
-
-  // {
-  //     path : '/',
-  //     handler : (req,res) =>{
-  //         res.send('Server is ready!');
-  //     }
-  // }
 ];
 
 const applyRouter = (app) => {
