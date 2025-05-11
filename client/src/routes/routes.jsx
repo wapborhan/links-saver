@@ -6,6 +6,9 @@ import NotFound from "../layout/NotFound/NotFound";
 import Dash from "../layout/Dash";
 import SIgnIn from "../layout/SIgnIn";
 import SIgnUp from "../layout/SIgnUp";
+import Categories from "../pages/dashboard/categories/Categories";
+import Website from "../pages/dashboard/websites/Website";
+import Users from "../pages/dashboard/users/Users";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +21,7 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/profile",
+        path: "/about",
         element: <About />,
       },
       {
@@ -39,6 +42,18 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: "Kl",
+      },
+      {
+        path: "categories",
+        element: <Categories />,
+      },
+      {
+        path: "websites",
+        element: <Website />,
+      },
+      {
+        path: "users",
+        element: <Users />,
       },
     ],
   },

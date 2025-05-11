@@ -10,13 +10,20 @@ const AddWebModal = ({ isOpen, setIsOpen, selectedCategories, refetch }) => {
 
     const form = e.target;
     const name = form.name.value;
-    const url = form.url.value;
+    let url = form.url.value;
+
+    function normalizeURL(inputURL) {
+      let url = inputURL.replace(/^(https?:\/\/)?(www\.)?/, "");
+
+      return `https://www.${url}`;
+    }
 
     const inputData = {
       name,
-      url,
+      url: normalizeURL(url),
       categories: selectedCategories.toLowerCase(),
     };
+    // console.log(inputData);
 
     axiosPublic
       .post("/websites", inputData)

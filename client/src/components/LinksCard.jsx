@@ -57,7 +57,7 @@ const LinksCard = ({ item, webRefetch }) => {
               </h4>
             </div>
             <Link
-              to={`https://${item.url}`}
+              to={`${item.url}`}
               className="w-[15%] p-[6px] 2xl:p-2 bg-[#ffffff20] text-primary rounded-[8px] text-center flex justify-center items-center hover:bg-[#ffffff30] duration-300 cursor-pointer"
               target="__BLANK"
             >

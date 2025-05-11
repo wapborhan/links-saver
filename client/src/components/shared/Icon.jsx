@@ -13,6 +13,7 @@ import {
   FaFilm,
   FaFolder,
   FaFootballBall,
+  FaGlobeAsia,
   FaGraduationCap,
   FaHeartbeat,
   FaHome,
@@ -36,12 +37,13 @@ import {
   FaSun,
   FaTrain,
   FaUser,
+  FaUsers,
   FaUtensils,
 } from "react-icons/fa";
 
 import { FaPencil } from "react-icons/fa6";
 import { ImSpinner10 } from "react-icons/im";
-import { MdFavorite } from "react-icons/md";
+import { MdFavorite, MdOutlineDashboardCustomize } from "react-icons/md";
 
 const Icon = ({ iconName, size }) => {
   const iconComponents = {
@@ -83,8 +85,11 @@ const Icon = ({ iconName, size }) => {
     FaShip: <FaShip size={size} />,
     FaPlaneDeparture: <FaPlaneDeparture size={size} />,
     FaMoneyBillWave: <FaMoneyBillWave size={size} />,
+    FaGlobeAsia: <FaGlobeAsia size={size} />,
+    FaUsers: <FaUsers size={size} />,
     FaBriefcase: <FaBriefcase size={size} />,
     ImSpinner10: <ImSpinner10 size={size} />,
+    MdOutlineDashboardCustomize: <MdOutlineDashboardCustomize size={size} />,
     default: <FaFolder size={size} />,
   };
 
